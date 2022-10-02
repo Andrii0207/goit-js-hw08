@@ -6,16 +6,13 @@ form.addEventListener('input', obFormInputData);
 form.addEventListener('submit', onFormSubmit);
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-let formData = {};
+const formData = {};
 
 onInitForm();
 
 function obFormInputData(evt) {
   const emailInput = evt.target.name;
   const messageInput = evt.target.value;
-
-  console.log('emailEl', emailEl.value);
-  console.log('messageEl', messageEl.value);
 
   formData[emailInput] = messageInput;
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
@@ -30,7 +27,6 @@ function onFormSubmit(evt) {
 
   if (emailInput === '' || messageInput === '') {
     alert('Please fill in all fields of the form!');
-    return;
   }
 
   evt.target.reset();
