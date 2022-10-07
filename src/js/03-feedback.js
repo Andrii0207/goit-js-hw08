@@ -1,8 +1,10 @@
+import trottle from 'lodash.throttle';
+
 const form = document.querySelector('.feedback-form');
 const emailEl = document.querySelector('input');
 const messageEl = document.querySelector('textarea');
 
-form.addEventListener('input', obFormInputData);
+form.addEventListener('input', trottle(obFormInputData, 500));
 form.addEventListener('submit', onFormSubmit);
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
